@@ -26,10 +26,10 @@ def ColorHistDetect(VideoName):
     # MyUtils.makeDir(result_path2)
     cap = cv2.VideoCapture(VideoName)  # 提取视频
     index = -1
-    plt.figure()
-    plt.title("Flattened Color Histogram")
-    plt.xlabel("Bins")
-    plt.ylabel("# of Pixels")
+    #plt.figure()
+    #plt.title("Flattened Color Histogram")
+    #plt.xlabel("Bins")
+    #plt.ylabel("# of Pixels")
 
     while (cap.isOpened()):
 
@@ -64,8 +64,8 @@ def ColorHistDetect(VideoName):
         weight= [0.5,0.3,0.2]
         hist = weight[0] * hist_h + weight[1] * hist_s + weight[2] * hist_v
 
-        plt.plot(hist)
-        plt.xlim([0, 256])
+        #plt.plot(hist)
+        #plt.xlim([0, 256])
 
         temp_frame.hist = hist
 
@@ -93,7 +93,7 @@ def ColorHistDetect(VideoName):
 
 
     cap.release()
-    plt.show()
+    #plt.show()
 
 
     similarThresholdWay(list_similarity, result_path)
@@ -152,4 +152,5 @@ def testHist(path):
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 
-ColorHistDetect("movie.mp4")
+import sys
+ColorHistDetect(sys.argv[1])
